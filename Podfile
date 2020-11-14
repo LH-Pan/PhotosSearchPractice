@@ -6,6 +6,7 @@ target 'PhotosSearchPractice' do
   use_frameworks!
   # Pods for PhotosSearchPractice
   
+  pod 'SwiftLint'
   pod 'IQKeyboardManagerSwift', '6.5.0'
   pod 'Alamofire', '~> 4.0'
   pod 'SnapKit', '~> 5.0.0'

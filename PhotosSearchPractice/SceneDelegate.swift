@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navigationController = UINavigationController()
         
-        let mainView = ViewController(nibName: nil, bundle: nil)
+        let mainView = PhotosSearchViewController(nibName: nil, bundle: nil)
         
         navigationController.viewControllers = [mainView]
         
