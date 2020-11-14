@@ -31,6 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             navigationController.viewControllers = [mainView]
             
+            navigationController.navigationBar.backgroundColor = .navigationGray
+            
+            navigationController.navigationBar.isTranslucent = false
+            
             window.rootViewController = navigationController
             
             window.makeKeyAndVisible()

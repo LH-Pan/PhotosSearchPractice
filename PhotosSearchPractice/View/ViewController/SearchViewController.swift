@@ -191,7 +191,11 @@ class SearchViewController: UIViewController {
     // MARK: - Objc Method
     @objc private func pushToResultPage() {
         
-        print(111)
+        let resultViewModel = ResultViewModel()
+        
+        let nextVC = ResultViewController(nibName: nil, bundle: nil, viewModel: resultViewModel)
+        
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 

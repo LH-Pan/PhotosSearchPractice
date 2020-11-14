@@ -21,6 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         navigationController.viewControllers = [mainView]
         
+        navigationController.navigationBar.barTintColor = .navigationGray
+
+        navigationController.navigationBar.isTranslucent = false
+        
         window.rootViewController = navigationController
         
         window.makeKeyAndVisible()

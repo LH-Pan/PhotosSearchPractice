@@ -5,6 +5,8 @@ private enum PSColor: String {
     case skyBlue = "#287CF6"
     
     case placeHolderGray = "#BDBDBD"
+    
+    case navigationGray = "#F5F5F5"
 }
 
 // Custom Color
@@ -13,13 +15,15 @@ extension UIColor {
     static let skyBlue = PSColor(.skyBlue)
     
     static let placeHolderGray = PSColor(.placeHolderGray)
+    
+    static let navigationGray = PSColor(.navigationGray)
 }
 
 extension UIColor {
     
     // Hex String -> UIColor
     static func hexStringToUIColor(hex: String) -> UIColor {
-        
+
         var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if cString.hasPrefix("#") {
