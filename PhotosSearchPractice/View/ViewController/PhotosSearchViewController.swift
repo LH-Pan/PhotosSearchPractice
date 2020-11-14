@@ -4,9 +4,9 @@ import SnapKit
 class PhotosSearchViewController: UIViewController {
     
     // MARK: - Constant / Variable Declare
-    let searchItemTextField = UITextField()
+    let searchItemTextField = PaddingTextField()
     
-    let limitTextField = UITextField()
+    let limitTextField = PaddingTextField()
     
     let searchButton = UIButton()
     
@@ -60,20 +60,23 @@ class PhotosSearchViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        limitTextField.placeholder = "每頁呈現數量"
-        limitTextField.layer.borderWidth = 1
-        limitTextField.layer.borderColor = UIColor.lightGray.cgColor
-        limitTextField.layer.cornerRadius = 6
+        setupTextField()
         
-        searchItemTextField.placeholder = "欲搜尋內容"
-        searchItemTextField.layer.borderWidth = 1
-        searchItemTextField.layer.borderColor = UIColor.lightGray.cgColor
-        searchItemTextField.layer.cornerRadius = 6
-        
-        setupSearchButton()
+        setupButton()
     }
     
-    private func setupSearchButton() {
+    private func setupTextField() {
+        
+        limitTextField.placeholder = "每頁呈現數量"
+        limitTextField.padding = 8
+        limitTextField.setupBorderAndRadius(borderWidth: 1, borderColor: .lightGray, cornerRadius: 6)
+        
+        searchItemTextField.placeholder = "欲搜尋內容"
+        searchItemTextField.padding = 8
+        searchItemTextField.setupBorderAndRadius(borderWidth: 1, borderColor: .lightGray, cornerRadius: 6)
+    }
+    
+    private func setupButton() {
         
         searchButton.setTitle("搜尋", for: .normal)
         
