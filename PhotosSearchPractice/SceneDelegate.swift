@@ -1,12 +1,6 @@
-//
-//  SceneDelegate.swift
-//  PhotosSearchPractice
-//
-//  Created by 潘立祥 on 2020/11/13.
-//  Copyright © 2020 PanLiHsiang. All rights reserved.
-//
-
 import UIKit
+import IQKeyboardManagerSwift
+
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -23,13 +17,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navigationController = UINavigationController()
         
-        let mainView = PhotosSearchViewController(nibName: nil, bundle: nil)
+        let mainView = SearchViewController(nibName: nil, bundle: nil)
         
         navigationController.viewControllers = [mainView]
         
         window.rootViewController = navigationController
         
         window.makeKeyAndVisible()
+        
+        IQKeyboardManager.shared.enable = true
+        
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     }
 }
 

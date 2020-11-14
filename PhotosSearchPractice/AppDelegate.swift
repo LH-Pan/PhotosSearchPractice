@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let navigationController = UINavigationController()
             
-            let mainView = PhotosSearchViewController(nibName: nil, bundle: nil)
+            let mainView = SearchViewController(nibName: nil, bundle: nil)
             
             navigationController.viewControllers = [mainView]
             
@@ -34,6 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             window.makeKeyAndVisible()
         }
+        
+        IQKeyboardManager.shared.enable = true
+        
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
         return true
     }

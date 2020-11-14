@@ -1,9 +1,10 @@
 import UIKit
 import SnapKit
 
-class PhotosSearchViewController: UIViewController {
+class SearchViewController: UIViewController {
     
     // MARK: - Constant / Variable Declare
+    
     let searchItemTextField = PaddingTextField()
     
     let limitTextField = PaddingTextField()
@@ -22,7 +23,6 @@ class PhotosSearchViewController: UIViewController {
     }
     
     // MARK: - Private Method
-    
     private func addSubViews() {
         
         view.addSubview(limitTextField)
@@ -68,15 +68,6 @@ class PhotosSearchViewController: UIViewController {
     private func setupTextFields() {
         
         setupTextField(
-            textField: limitTextField,
-            title: "每頁呈現數量",
-            padding: 8,
-            borderWidth: 1,
-            borderColor: .placeHolderGray,
-            cornerRadius: 6
-        )
-        
-        setupTextField(
             textField: searchItemTextField,
             title: "欲搜尋內容",
             padding: 8,
@@ -84,15 +75,25 @@ class PhotosSearchViewController: UIViewController {
             borderColor: .placeHolderGray,
             cornerRadius: 6
         )
+        
+        setupTextField(
+            textField: limitTextField,
+            title: "每頁呈現數量",
+            padding: 8,
+            borderWidth: 1,
+            borderColor: .placeHolderGray,
+            cornerRadius: 6,
+            keyBoardType: .numberPad
+        )
     }
     
-    private func setupTextField(textField: PaddingTextField, title: String, padding: CGFloat, borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat) {
+    private func setupTextField(textField: PaddingTextField, title: String, padding: CGFloat, borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat, keyBoardType: UIKeyboardType = .default) {
         
+        textField.delegate = self
         textField.placeholder = title
-        
         textField.padding = padding
-        
         textField.font = .systemFont(ofSize: 16, weight: .heavy)
+        textField.keyboardType = keyBoardType
         
         textField.setupBorderAndRadius(
             borderWidth: borderWidth,
@@ -109,16 +110,32 @@ class PhotosSearchViewController: UIViewController {
         
         searchButton.showsTouchWhenHighlighted = true
         
-        searchButton.backgroundColor = .skyBlue
+        searchButton.backgroundColor = .placeHolderGray
         
-        searchButton.isEnabled = true
+        searchButton.isEnabled = false
         
         searchButton.addTarget(self, action: #selector(pushToResultPage), for: .touchUpInside)
     }
     
+    // MARK: - Objc Method
     @objc private func pushToResultPage() {
         
         print(111)
     }
 }
 
+// MARK: - 實作 UITextFieldDelegate
+extension SearchViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        switch textField {
+            
+        case limitTextField: break
+            
+        case searchItemTextField: break
+            
+        default: break
+        }
+    }
+}
