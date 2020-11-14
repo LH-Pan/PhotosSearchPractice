@@ -31,7 +31,7 @@ enum SearchViewState {
 class SearchViewController: UIViewController {
     
     // MARK: - Constant / Variable Declare
-    lazy var viewModel: SearchViewModel = {
+    private lazy var viewModel: SearchViewModel = {
 
         let viewModel = SearchViewModel()
 
@@ -191,9 +191,9 @@ class SearchViewController: UIViewController {
     // MARK: - Objc Method
     @objc private func pushToResultPage() {
         
-        let resultViewModel = ResultViewModel()
+        let resultViewModel = ResultViewModel(searchItem: viewModel.searchItem, limit: viewModel.limit)
         
-        let nextVC = ResultViewController(nibName: nil, bundle: nil, viewModel: resultViewModel)
+        let nextVC = ResultViewController(viewModel: resultViewModel)
         
         navigationController?.pushViewController(nextVC, animated: true)
     }
