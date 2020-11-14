@@ -10,6 +10,7 @@ target 'PhotosSearchPractice' do
   pod 'IQKeyboardManagerSwift', '6.5.0'
   pod 'Alamofire', '~> 4.0'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'Kingfisher', '~> 5.15'
   
   target 'PhotosSearchPracticeTests' do
     inherit! :search_paths

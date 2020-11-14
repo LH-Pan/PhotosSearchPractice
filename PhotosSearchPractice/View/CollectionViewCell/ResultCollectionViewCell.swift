@@ -20,6 +20,8 @@ class ResultCollectionViewCell: UICollectionViewCell {
             guard let cellVM = cellViewModel else { return }
             
             titleLabel.text = cellVM.titleText
+            
+            photoImageView.loadImage(cellVM.imageUrlText)
         }
     }
 }
