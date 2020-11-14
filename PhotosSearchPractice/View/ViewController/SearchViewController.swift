@@ -1,6 +1,13 @@
 import UIKit
 import SnapKit
 
+enum SearchViewState {
+    
+    case allowSearch
+    
+    case disAllowSearch
+}
+
 class SearchViewController: UIViewController {
     
     // MARK: - Constant / Variable Declare
@@ -117,6 +124,18 @@ class SearchViewController: UIViewController {
         searchButton.addTarget(self, action: #selector(pushToResultPage), for: .touchUpInside)
     }
     
+    private func presentNotIntAlert() {
+        
+        let alert = UIAlertController(title: "請輸入數字", message: "不可輸入非整數以外的字元", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "確認", style: .default, handler: { [weak self] _ in
+            
+            self?.limitTextField.text = .empty
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: - Objc Method
     @objc private func pushToResultPage() {
         
@@ -131,9 +150,14 @@ extension SearchViewController: UITextFieldDelegate {
         
         switch textField {
             
-        case limitTextField: break
-            
         case searchItemTextField: break
+        
+        case limitTextField:
+            
+            guard let double = Double(textField.text ?? .empty) else { presentNotIntAlert(); return }
+            
+            let integer = Int(floor(double))
+            
             
         default: break
         }
