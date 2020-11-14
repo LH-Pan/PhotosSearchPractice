@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,6 @@
 		2246DDC2255ECD0D00508A1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2246DDC1255ECD0D00508A1B /* AppDelegate.swift */; };
 		2246DDC4255ECD0D00508A1B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2246DDC3255ECD0D00508A1B /* SceneDelegate.swift */; };
 		2246DDC6255ECD0D00508A1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2246DDC5255ECD0D00508A1B /* ViewController.swift */; };
-		2246DDC9255ECD0D00508A1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2246DDC7255ECD0D00508A1B /* Main.storyboard */; };
 		2246DDCC255ECD0D00508A1B /* PhotosSearchPractice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2246DDCA255ECD0D00508A1B /* PhotosSearchPractice.xcdatamodeld */; };
 		2246DDCE255ECD0E00508A1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2246DDCD255ECD0E00508A1B /* Assets.xcassets */; };
 		2246DDD1255ECD0E00508A1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2246DDCF255ECD0E00508A1B /* LaunchScreen.storyboard */; };
@@ -35,7 +34,6 @@
 		2246DDC1255ECD0D00508A1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2246DDC3255ECD0D00508A1B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2246DDC5255ECD0D00508A1B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2246DDC8255ECD0D00508A1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2246DDCB255ECD0D00508A1B /* PhotosSearchPractice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotosSearchPractice.xcdatamodel; sourceTree = "<group>"; };
 		2246DDCD255ECD0E00508A1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2246DDD0255ECD0E00508A1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,10 +91,12 @@
 		2246DDC0255ECD0D00508A1B /* PhotosSearchPractice */ = {
 			isa = PBXGroup;
 			children = (
+				2246DDE9255EEC7500508A1B /* Extension */,
+				2246DDE6255EEBCF00508A1B /* Model */,
+				2246DDE8255EEBE400508A1B /* ViewModel */,
+				2246DDE7255EEBDD00508A1B /* View */,
 				2246DDC1255ECD0D00508A1B /* AppDelegate.swift */,
 				2246DDC3255ECD0D00508A1B /* SceneDelegate.swift */,
-				2246DDC5255ECD0D00508A1B /* ViewController.swift */,
-				2246DDC7255ECD0D00508A1B /* Main.storyboard */,
 				2246DDCD255ECD0E00508A1B /* Assets.xcassets */,
 				2246DDCF255ECD0E00508A1B /* LaunchScreen.storyboard */,
 				2246DDD2255ECD0E00508A1B /* Info.plist */,
@@ -114,6 +114,35 @@
 			path = PhotosSearchPracticeTests;
 			sourceTree = "<group>";
 		};
+		2246DDE6255EEBCF00508A1B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2246DDE7255EEBDD00508A1B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2246DDC5255ECD0D00508A1B /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2246DDE8255EEBE400508A1B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2246DDE9255EEC7500508A1B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		999C99F7DFBB1DFFEBAD6A68 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +151,6 @@
 				C314D70CF81D6CC49E11C572 /* Pods-PhotosSearchPracticeTests.debug.xcconfig */,
 				CE11F8A9B065E97607B757D8 /* Pods-PhotosSearchPracticeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -221,7 +249,6 @@
 			files = (
 				2246DDD1255ECD0E00508A1B /* LaunchScreen.storyboard in Resources */,
 				2246DDCE255ECD0E00508A1B /* Assets.xcassets in Resources */,
-				2246DDC9255ECD0D00508A1B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,14 +356,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2246DDC7255ECD0D00508A1B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2246DDC8255ECD0D00508A1B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2246DDCF255ECD0E00508A1B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
