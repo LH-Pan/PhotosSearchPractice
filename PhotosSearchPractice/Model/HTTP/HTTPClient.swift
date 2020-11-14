@@ -38,24 +38,6 @@ protocol PSRequest {
     var urlString: String { get }
 }
 
-extension PSRequest {
-    
-    func makeRequest() -> URLRequest {
-        
-        let url = URL(string: urlString)!
-        
-        var request = URLRequest(url: url)
-        
-        request.allHTTPHeaderFields = headers
-        
-        request.httpBody = body
-        
-        request.httpMethod = method
-        
-        return request
-    }
-}
-
 class HTTPClient {
     
     static let shared = HTTPClient()
@@ -64,7 +46,7 @@ class HTTPClient {
     
     func request(_ psRequest: PSRequest, completion: @escaping (Result<Data>) -> Void) {
         
-        Alamofire.request(psRequest.makeRequest()).responseJSON { response in
+        Alamofire.request(makeRequest(psRequest)).responseJSON { response in
             
             guard response.error == nil else {
 
@@ -94,5 +76,20 @@ class HTTPClient {
                 completion(Result.failure(HTTPClientError.unexpectedError))
             }
         }
+    }
+    
+    private func makeRequest(_ psRequest: PSRequest) -> URLRequest {
+        
+        let url = URL(string: psRequest.urlString)!
+        
+        var request = URLRequest(url: url)
+        
+        request.allHTTPHeaderFields = psRequest.headers
+        
+        request.httpBody = psRequest.body
+        
+        request.httpMethod = psRequest.method
+        
+        return request
     }
 }
