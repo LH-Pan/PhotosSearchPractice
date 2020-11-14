@@ -6,11 +6,37 @@ enum SearchViewState {
     case allowSearch
     
     case disAllowSearch
+    
+    var buttonEnable: Bool {
+        
+        switch self {
+            
+        case .allowSearch: return true
+            
+        case .disAllowSearch: return false
+        }
+    }
+    
+    var buttonBackgroundColor: UIColor {
+        
+        switch self {
+            
+        case .allowSearch: return .skyBlue
+            
+        case .disAllowSearch: return .placeHolderGray
+        }
+    }
 }
 
 class SearchViewController: UIViewController {
     
     // MARK: - Constant / Variable Declare
+    lazy var viewModel: SearchViewModel = {
+
+        let viewModel = SearchViewModel()
+
+        return viewModel
+    }()
     
     let searchItemTextField = PaddingTextField()
     
@@ -27,13 +53,30 @@ class SearchViewController: UIViewController {
         setupSubViews()
         
         setupConstraints()
+        
+        bindWithVM()
     }
     
     // MARK: - Private Method
+    private func bindWithVM() {
+        
+        viewModel.notNumberAlertClosure = { [weak self] in
+            
+            self?.presentNotNumberAlert()
+        }
+        
+        viewModel.changeStateClosure = { [weak self] state in
+            
+            self?.setupSearchButton(with: state)
+        }
+        
+        viewModel.initViewModel()
+    }
+    
     private func addSubViews() {
         
-        view.addSubview(limitTextField)
         view.addSubview(searchItemTextField)
+        view.addSubview(limitTextField)
         view.addSubview(searchButton)
     }
     
@@ -90,7 +133,7 @@ class SearchViewController: UIViewController {
             borderWidth: 1,
             borderColor: .placeHolderGray,
             cornerRadius: 6,
-            keyBoardType: .numberPad
+            keyBoardType: .numbersAndPunctuation
         )
     }
     
@@ -124,13 +167,22 @@ class SearchViewController: UIViewController {
         searchButton.addTarget(self, action: #selector(pushToResultPage), for: .touchUpInside)
     }
     
-    private func presentNotIntAlert() {
+    private func setupSearchButton(with state: SearchViewState) {
+        
+        searchButton.isEnabled = state.buttonEnable
+        
+        searchButton.backgroundColor = state.buttonBackgroundColor
+    }
+    
+    private func presentNotNumberAlert() {
         
         let alert = UIAlertController(title: "請輸入數字", message: "不可輸入非整數以外的字元", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "確認", style: .default, handler: { [weak self] _ in
             
             self?.limitTextField.text = .empty
+            
+            self?.viewModel.setLimit(text: .empty)
         }))
         
         present(alert, animated: true, completion: nil)
@@ -150,14 +202,9 @@ extension SearchViewController: UITextFieldDelegate {
         
         switch textField {
             
-        case searchItemTextField: break
+        case searchItemTextField: viewModel.setSearchItem(text: textField.text)
         
-        case limitTextField:
-            
-            guard let double = Double(textField.text ?? .empty) else { presentNotIntAlert(); return }
-            
-            let integer = Int(floor(double))
-            
+        case limitTextField: viewModel.setLimit(text: textField.text)
             
         default: break
         }
