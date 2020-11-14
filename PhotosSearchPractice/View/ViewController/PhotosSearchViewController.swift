@@ -60,20 +60,45 @@ class PhotosSearchViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        setupTextField()
+        setupTextFields()
         
         setupButton()
     }
     
-    private func setupTextField() {
+    private func setupTextFields() {
         
-        limitTextField.placeholder = "每頁呈現數量"
-        limitTextField.padding = 8
-        limitTextField.setupBorderAndRadius(borderWidth: 1, borderColor: .lightGray, cornerRadius: 6)
+        setupTextField(
+            textField: limitTextField,
+            title: "每頁呈現數量",
+            padding: 8,
+            borderWidth: 1,
+            borderColor: .placeHolderGray,
+            cornerRadius: 6
+        )
         
-        searchItemTextField.placeholder = "欲搜尋內容"
-        searchItemTextField.padding = 8
-        searchItemTextField.setupBorderAndRadius(borderWidth: 1, borderColor: .lightGray, cornerRadius: 6)
+        setupTextField(
+            textField: searchItemTextField,
+            title: "欲搜尋內容",
+            padding: 8,
+            borderWidth: 1,
+            borderColor: .placeHolderGray,
+            cornerRadius: 6
+        )
+    }
+    
+    private func setupTextField(textField: PaddingTextField, title: String, padding: CGFloat, borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat) {
+        
+        textField.placeholder = title
+        
+        textField.padding = padding
+        
+        textField.font = .systemFont(ofSize: 16, weight: .heavy)
+        
+        textField.setupBorderAndRadius(
+            borderWidth: borderWidth,
+            borderColor: borderColor,
+            cornerRadius: cornerRadius
+        )
     }
     
     private func setupButton() {
@@ -84,7 +109,7 @@ class PhotosSearchViewController: UIViewController {
         
         searchButton.showsTouchWhenHighlighted = true
         
-        searchButton.backgroundColor = .blue
+        searchButton.backgroundColor = .skyBlue
         
         searchButton.isEnabled = true
         
