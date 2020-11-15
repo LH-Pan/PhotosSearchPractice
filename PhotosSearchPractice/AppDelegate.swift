@@ -25,17 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.window = window
             
-            let navigationController = UINavigationController()
+            let searchView = SearchViewController(nibName: nil, bundle: nil)
             
-            let mainView = SearchViewController(nibName: nil, bundle: nil)
+            let favoriteView = FavoriteViewController(nibName: nil, bundle: nil)
             
-            navigationController.viewControllers = [mainView]
+            let firstNavigationController = PSNavigationController(rootViewController: searchView)
             
-            navigationController.navigationBar.backgroundColor = .navigationGray
+            let secondNavigationController = PSNavigationController(rootViewController: favoriteView)
             
-            navigationController.navigationBar.isTranslucent = false
-            
-            window.rootViewController = navigationController
+            window.rootViewController = firstNavigationController
             
             window.makeKeyAndVisible()
         }

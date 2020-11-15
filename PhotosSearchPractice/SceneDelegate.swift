@@ -14,15 +14,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window = window
         
-        let navigationController = UINavigationController()
+        let searchView = SearchViewController(nibName: nil, bundle: nil)
         
-        let mainView = SearchViewController(nibName: nil, bundle: nil)
-        
-        navigationController.viewControllers = [mainView]
-        
-        navigationController.navigationBar.barTintColor = .navigationGray
-
-        navigationController.navigationBar.isTranslucent = false
+        let navigationController = PSNavigationController(rootViewController: searchView)
         
         window.rootViewController = navigationController
         
