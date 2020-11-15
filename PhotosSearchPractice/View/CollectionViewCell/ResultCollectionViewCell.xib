@@ -25,19 +25,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pk-MH-xkA">
                         <rect key="frame" x="0.0" y="200" width="200" height="20"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客倌農場" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tV7-JI-vJU">
-                                <rect key="frame" x="65.5" y="-0.5" width="69.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客倌農場" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="tV7-JI-vJU">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="tV7-JI-vJU" firstAttribute="centerY" secondItem="3pk-MH-xkA" secondAttribute="centerY" id="6LS-Ik-9eK"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tV7-JI-vJU" secondAttribute="trailing" id="7wd-8W-JpI"/>
-                            <constraint firstItem="tV7-JI-vJU" firstAttribute="centerX" secondItem="3pk-MH-xkA" secondAttribute="centerX" id="ZF5-j4-a7H"/>
-                            <constraint firstItem="tV7-JI-vJU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3pk-MH-xkA" secondAttribute="leading" id="gwt-UH-8Nv"/>
+                            <constraint firstAttribute="bottom" secondItem="tV7-JI-vJU" secondAttribute="bottom" id="2L4-4c-d0e"/>
+                            <constraint firstAttribute="trailing" secondItem="tV7-JI-vJU" secondAttribute="trailing" id="7wd-8W-JpI"/>
+                            <constraint firstItem="tV7-JI-vJU" firstAttribute="leading" secondItem="3pk-MH-xkA" secondAttribute="leading" id="gwt-UH-8Nv"/>
+                            <constraint firstItem="tV7-JI-vJU" firstAttribute="top" secondItem="3pk-MH-xkA" secondAttribute="top" id="v16-Yr-hth"/>
                         </constraints>
                     </view>
                 </subviews>

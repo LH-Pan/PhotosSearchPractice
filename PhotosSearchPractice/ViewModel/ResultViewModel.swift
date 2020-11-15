@@ -13,12 +13,26 @@ class ResultViewModel {
 
     private var photos: [Photo] = []
 
-    private var resultCellViewModels: [ResultCellViewModel] = []
-
+    private var resultCellViewModels: [ResultCellViewModel] = [] {
+        
+        didSet {
+            
+            reloadDateClosure?()
+        }
+    }
+    
+    // MARK: - Public Constant / Variable Declare
     var searchItemText: String {
 
         searchItem
     }
+    
+    var numberOfCells: Int {
+        
+        resultCellViewModels.count
+    }
+    
+    var reloadDateClosure: (() -> Void)?
 
     // MARK: - Initialize Method
     init(searchItem: String, limit: Int) {
@@ -57,6 +71,12 @@ class ResultViewModel {
         }
     }
     
+    func getCellViewModel(at index: Int) -> ResultCellViewModel {
+        
+        return resultCellViewModels[index]
+    }
+    
+    // MARK: - Private Method
     private func processPhotosData(photos: [Photo]) {
         
         var cellVMs: [ResultCellViewModel] = []

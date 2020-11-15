@@ -38,6 +38,14 @@ class ResultViewController: UIViewController {
     // MARK: - Private Method
     private func bindWithVM() {
         
+        viewModel.reloadDateClosure = { [weak self] in
+            
+            DispatchQueue.main.async {
+                
+                self?.resultCollectionView.reloadData()
+            }
+        }
+        
         viewModel.initViewModel()
     }
     
@@ -82,7 +90,7 @@ class ResultViewController: UIViewController {
         
         let inset: CGFloat = CGFloat(8).convertWithSimulatorWidth()
         
-        let itemWidth = (resultCollectionView.bounds.width - inset * 3) / 2
+        let itemWidth = (view.bounds.width - inset * 3) / 2
         
         let itemHeight = itemWidth + CGFloat(25).convertWithSimulatorHeight()
         
@@ -90,8 +98,7 @@ class ResultViewController: UIViewController {
         
         layout.sectionInset = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
         
-        layout.itemSize = CGSize(width: itemWidth,
-                                 height: itemHeight)
+        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
     }
 }
 
@@ -100,7 +107,7 @@ extension ResultViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 5
+        return viewModel.numberOfCells
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -109,7 +116,9 @@ extension ResultViewController: UICollectionViewDataSource {
         
         guard let resultCell = cell as? ResultCollectionViewCell else { return UICollectionViewCell() }
         
-        resultCell.backgroundColor = .blue
+        let cellViewModel = viewModel.getCellViewModel(at: indexPath.item)
+
+        resultCell.cellViewModel = cellViewModel
         
         return resultCell
     }
