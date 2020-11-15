@@ -4,6 +4,7 @@ PODS:
   - Kingfisher (5.15.7):
     - Kingfisher/Core (= 5.15.7)
   - Kingfisher/Core (5.15.7)
+  - MJRefresh (3.5.0)
   - SnapKit (5.0.1)
   - SwiftLint (0.41.0)
 
@@ -11,6 +12,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.0)
   - IQKeyboardManagerSwift (= 6.5.0)
   - Kingfisher (~> 5.15)
+  - MJRefresh
   - SnapKit (~> 5.0.0)
   - SwiftLint
 
@@ -19,6 +21,7 @@ SPEC REPOS:
     - Alamofire
     - IQKeyboardManagerSwift
     - Kingfisher
+    - MJRefresh
     - SnapKit
     - SwiftLint
 
@@ -26,9 +29,10 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   IQKeyboardManagerSwift: 6cd19976c6e871907c4ed9127c2d3affdd4defc2
   Kingfisher: 6e1a13523fcb1c86924ce53affe4ac957e544d59
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: a8b4c89d35e397dba1cf45916ca3f944ad0d444a
+PODFILE CHECKSUM: cb3c417633b0c9e97d24ba21e169f5a66c5ea9c5
 
 COCOAPODS: 1.9.3

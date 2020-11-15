@@ -11,6 +11,7 @@ target 'PhotosSearchPractice' do
   pod 'Alamofire', '~> 4.0'
   pod 'SnapKit', '~> 5.0.0'
   pod 'Kingfisher', '~> 5.15'
+  pod 'MJRefresh'
   
   target 'PhotosSearchPracticeTests' do
     inherit! :search_paths
