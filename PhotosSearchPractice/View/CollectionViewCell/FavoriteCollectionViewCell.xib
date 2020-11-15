@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="LJg-1z-mZn" customClass="FavoriteCollectionViewCell" customModule="PhotosSearchPractice" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="225"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="PUl-kh-TDz">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="225"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rbB-Da-fM2">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="rbB-Da-fM2" secondAttribute="height" multiplier="1:1" id="IEZ-cn-ddw"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeq-Xz-tIq">
+                        <rect key="frame" x="0.0" y="200" width="200" height="25"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客官農場" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="oeA-2E-rdN">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oeA-2E-rdN" firstAttribute="top" secondItem="eeq-Xz-tIq" secondAttribute="top" id="1ra-Tp-Vg1"/>
+                            <constraint firstAttribute="trailing" secondItem="oeA-2E-rdN" secondAttribute="trailing" id="EOq-RP-6Tv"/>
+                            <constraint firstItem="oeA-2E-rdN" firstAttribute="leading" secondItem="eeq-Xz-tIq" secondAttribute="leading" id="MaY-nI-aFN"/>
+                            <constraint firstAttribute="bottom" secondItem="oeA-2E-rdN" secondAttribute="bottom" id="smA-31-5y1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="eeq-Xz-tIq" secondAttribute="trailing" id="1hf-Em-B67"/>
+                    <constraint firstAttribute="bottom" secondItem="eeq-Xz-tIq" secondAttribute="bottom" id="5UR-3c-Hw0"/>
+                    <constraint firstItem="rbB-Da-fM2" firstAttribute="top" secondItem="PUl-kh-TDz" secondAttribute="top" id="Bz2-dH-I2w"/>
+                    <constraint firstItem="eeq-Xz-tIq" firstAttribute="top" secondItem="rbB-Da-fM2" secondAttribute="bottom" id="dHb-kD-xuX"/>
+                    <constraint firstItem="rbB-Da-fM2" firstAttribute="leading" secondItem="PUl-kh-TDz" secondAttribute="leading" id="f0J-mk-hak"/>
+                    <constraint firstItem="eeq-Xz-tIq" firstAttribute="leading" secondItem="PUl-kh-TDz" secondAttribute="leading" id="fBR-Do-qzH"/>
+                    <constraint firstAttribute="trailing" secondItem="rbB-Da-fM2" secondAttribute="trailing" id="xJp-Hk-nab"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <connections>
+                <outlet property="photoImageView" destination="rbB-Da-fM2" id="Fg8-7m-GPJ"/>
+                <outlet property="titleLabel" destination="oeA-2E-rdN" id="hxh-ak-vnm"/>
+            </connections>
+            <point key="canvasLocation" x="-46.376811594202906" y="53.90625"/>
+        </collectionViewCell>
+    </objects>
+</document>
