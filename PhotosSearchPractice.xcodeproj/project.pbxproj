@@ -38,6 +38,8 @@
 		22AB638E2561570400D8D4A5 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AB638D2561570400D8D4A5 /* FavoriteViewController.swift */; };
 		22AB6390256159CA00D8D4A5 /* PSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AB638F256159CA00D8D4A5 /* PSNavigationController.swift */; };
 		22AB63922561687000D8D4A5 /* PSTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AB63912561687000D8D4A5 /* PSTabBarController.swift */; };
+		22AB6396256187A900D8D4A5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AB6395256187A900D8D4A5 /* StorageManager.swift */; };
+		22AB639825618C9A00D8D4A5 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AB639725618C9A00D8D4A5 /* Int+Extension.swift */; };
 		FD95A7B25754FF040E0CC686 /* Pods_PhotosSearchPractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E015773212C766CE0A9A1597 /* Pods_PhotosSearchPractice.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		22AB638D2561570400D8D4A5 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		22AB638F256159CA00D8D4A5 /* PSNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSNavigationController.swift; sourceTree = "<group>"; };
 		22AB63912561687000D8D4A5 /* PSTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTabBarController.swift; sourceTree = "<group>"; };
+		22AB6395256187A900D8D4A5 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		22AB639725618C9A00D8D4A5 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		7B85C4DD418A927D017700BC /* Pods-PhotosSearchPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosSearchPractice.release.xcconfig"; path = "Target Support Files/Pods-PhotosSearchPractice/Pods-PhotosSearchPractice.release.xcconfig"; sourceTree = "<group>"; };
 		91074759752CB5B4CBA6319D /* Pods-PhotosSearchPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosSearchPractice.debug.xcconfig"; path = "Target Support Files/Pods-PhotosSearchPractice/Pods-PhotosSearchPractice.debug.xcconfig"; sourceTree = "<group>"; };
 		C314D70CF81D6CC49E11C572 /* Pods-PhotosSearchPracticeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosSearchPracticeTests.debug.xcconfig"; path = "Target Support Files/Pods-PhotosSearchPracticeTests/Pods-PhotosSearchPracticeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -147,7 +151,6 @@
 				2246DDC3255ECD0D00508A1B /* SceneDelegate.swift */,
 				2246DDCF255ECD0E00508A1B /* LaunchScreen.storyboard */,
 				2246DDD2255ECD0E00508A1B /* Info.plist */,
-				2246DDCA255ECD0D00508A1B /* PhotosSearchPractice.xcdatamodeld */,
 			);
 			path = PhotosSearchPractice;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 		2246DDE6255EEBCF00508A1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				22AB63942561878E00D8D4A5 /* LocalStorage */,
 				2246DDF6255FD08D00508A1B /* PhotosService */,
 				2246DDEA255FA41400508A1B /* HTTP */,
 			);
@@ -194,6 +198,7 @@
 		2246DDE9255EEC7500508A1B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				22AB639725618C9A00D8D4A5 /* Int+Extension.swift */,
 				2246DDF7255FDE3400508A1B /* String+Extension.swift */,
 				22AB63872560C74700D8D4A5 /* NSObject+Extension.swift */,
 				2246DDFD2560059D00508A1B /* UIKit */,
@@ -274,6 +279,15 @@
 				2246DDCD255ECD0E00508A1B /* Assets.xcassets */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		22AB63942561878E00D8D4A5 /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				2246DDCA255ECD0D00508A1B /* PhotosSearchPractice.xcdatamodeld */,
+				22AB6395256187A900D8D4A5 /* StorageManager.swift */,
+			);
+			path = LocalStorage;
 			sourceTree = "<group>";
 		};
 		999C99F7DFBB1DFFEBAD6A68 /* Pods */ = {
@@ -499,6 +513,7 @@
 				22AB638C2560DD8B00D8D4A5 /* MJRefreshWrapper.swift in Sources */,
 				22AB638A2560C97400D8D4A5 /* UICollectionView+Extension.swift in Sources */,
 				2246DDFC2560021300508A1B /* CGFloat+Extension.swift in Sources */,
+				22AB639825618C9A00D8D4A5 /* Int+Extension.swift in Sources */,
 				2246DDF1255FC3A500508A1B /* PhotosObject.swift in Sources */,
 				2246DDC2255ECD0D00508A1B /* AppDelegate.swift in Sources */,
 				2246DE052560113B00508A1B /* UIColor+Extension.swift in Sources */,
@@ -506,6 +521,7 @@
 				22AB63802560476E00D8D4A5 /* ResultCollectionViewCell.swift in Sources */,
 				2246DDF3255FD04C00508A1B /* PhotosParser.swift in Sources */,
 				2246DDF5255FD06A00508A1B /* PhotosProvider.swift in Sources */,
+				22AB6396256187A900D8D4A5 /* StorageManager.swift in Sources */,
 				22AB638E2561570400D8D4A5 /* FavoriteViewController.swift in Sources */,
 				22AB63882560C74700D8D4A5 /* NSObject+Extension.swift in Sources */,
 			);
