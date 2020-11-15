@@ -61,9 +61,9 @@ class SearchViewModel {
     }
     
     // MARK: - Closure Declare
-    var notNumberAlertClosure: (()->())?
+    var notNumberAlertClosure: (() -> Void)?
     
-    var changeStateClosure: ((SearchViewState)->())?
+    var changeStateClosure: ((SearchViewState) -> Void)?
     
     // MARK: - Public Method
     func initViewModel() {

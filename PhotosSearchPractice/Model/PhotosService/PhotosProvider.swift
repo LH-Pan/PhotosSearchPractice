@@ -12,7 +12,8 @@ class PhotosProvider {
         
         let encodeUrlText = text.urlEncoded()
         
-        HTTPClient.shared.request(PhotosRequest.fetchPhotos(page: page, limit: limit, text: encodeUrlText)) { [weak self] result in
+        HTTPClient.shared.request(
+            PhotosRequest.fetchPhotos(page: page, limit: limit, text: encodeUrlText)) { [weak self] result in
             
             guard let strongSelf = self else { return }
             

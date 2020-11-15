@@ -59,6 +59,7 @@ struct Photo: Codable {
 
 enum PhotoFormat: String {
     
+    // swiftlint:disable identifier_name
     case thumbnail_75 = "s"
     
     case thumbnail_100 = "t"
@@ -78,4 +79,6 @@ enum PhotoFormat: String {
     case medium_800 = "c"
     
     case large_1024 = "b"
+    
+    // swiftlint:enable identifier_name
 }

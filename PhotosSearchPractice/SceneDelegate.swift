@@ -1,7 +1,6 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -34,4 +33,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     }
 }
-

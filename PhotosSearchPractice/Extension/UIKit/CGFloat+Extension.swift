@@ -1,7 +1,7 @@
 import UIKit
 
 enum Simulator {
-    
+
     case iPhone11
     
     var width: CGFloat {

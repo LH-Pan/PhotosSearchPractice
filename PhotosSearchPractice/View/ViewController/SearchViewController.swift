@@ -120,7 +120,6 @@ class SearchViewController: UIViewController {
         setupTextField(
             textField: searchItemTextField,
             title: "欲搜尋內容",
-            padding: 8,
             borderWidth: 1,
             borderColor: .placeHolderGray,
             cornerRadius: 6
@@ -129,7 +128,6 @@ class SearchViewController: UIViewController {
         setupTextField(
             textField: limitTextField,
             title: "每頁呈現數量",
-            padding: 8,
             borderWidth: 1,
             borderColor: .placeHolderGray,
             cornerRadius: 6,
@@ -137,11 +135,12 @@ class SearchViewController: UIViewController {
         )
     }
     
-    private func setupTextField(textField: PaddingTextField, title: String, padding: CGFloat, borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat, keyBoardType: UIKeyboardType = .default) {
+    private func setupTextField(textField: PaddingTextField, title: String, borderWidth: CGFloat,
+                                borderColor: UIColor, cornerRadius: CGFloat, keyBoardType: UIKeyboardType = .default) {
         
         textField.delegate = self
         textField.placeholder = title
-        textField.padding = padding
+        textField.padding = 8
         textField.font = .systemFont(ofSize: 16, weight: .heavy)
         textField.keyboardType = keyBoardType
         

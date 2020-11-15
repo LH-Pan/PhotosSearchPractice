@@ -1,9 +1,13 @@
 import UIKit
+import SnapKit
 
 class ResultViewController: UIViewController {
     
     // MARK: - Private Constant / Variable Declare
     private let viewModel: ResultViewModel
+    
+    let resultCollectionView: UICollectionView =
+        UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     // MARK: - Initialize Method
     init(viewModel: ResultViewModel) {
@@ -22,7 +26,11 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        addSubviews()
+        
+        setupConstraints()
+        
+        setupSubviews()
         
         bindWithVM()
     }
@@ -31,5 +39,78 @@ class ResultViewController: UIViewController {
     private func bindWithVM() {
         
         viewModel.initViewModel()
+    }
+    
+    private func addSubviews() {
+        
+        view.addSubview(resultCollectionView)
+    }
+    
+    private func setupConstraints() {
+        
+        resultCollectionView.snp.makeConstraints { make in
+            
+            make.top.bottom.leading.trailing.equalTo(view)
+        }
+    }
+    
+    private func setupSubviews() {
+        
+        title = "搜尋結果 \(viewModel.searchItemText)"
+        
+        view.backgroundColor = .white
+        
+        setupCollectionView()
+    }
+    
+    private func setupCollectionView() {
+        
+        resultCollectionView.dataSource = self
+        
+        resultCollectionView.registerCellWithNib(identifier: ResultCollectionViewCell.id)
+        
+        resultCollectionView.backgroundColor = .white
+        
+        setupCollectionViewLayout()
+    }
+    
+    private func setupCollectionViewLayout() {
+        
+        let collectionViewLayout = resultCollectionView.collectionViewLayout
+        
+        guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        
+        let inset: CGFloat = CGFloat(8).convertWithSimulatorWidth()
+        
+        let itemWidth = (resultCollectionView.bounds.width - inset * 3) / 2
+        
+        let itemHeight = itemWidth + CGFloat(25).convertWithSimulatorHeight()
+        
+        layout.minimumInteritemSpacing = inset
+        
+        layout.sectionInset = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+        
+        layout.itemSize = CGSize(width: itemWidth,
+                                 height: itemHeight)
+    }
+}
+
+// MARK: - 實作 UICollectionViewDataSource
+extension ResultViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.id, for: indexPath)
+        
+        guard let resultCell = cell as? ResultCollectionViewCell else { return UICollectionViewCell() }
+        
+        resultCell.backgroundColor = .blue
+        
+        return resultCell
     }
 }

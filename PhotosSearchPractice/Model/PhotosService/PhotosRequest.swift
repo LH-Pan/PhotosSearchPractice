@@ -14,7 +14,7 @@ enum PhotosRequest: PSRequest {
     
     case fetchPhotos(page: Int, limit: Int, text: String)
     
-    var headers: [String : String] {
+    var headers: [String: String] {
         
         switch self {
             
