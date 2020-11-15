@@ -21,7 +21,7 @@ class ResultViewModel {
                 
                 insertCellsClosure?(resultCellViewModels, oldValue)
                 
-            } else {
+            } else if resultCellViewModels.count < oldValue.count {
                 
                 reloadDataClosure?()
             }
@@ -93,6 +93,11 @@ class ResultViewModel {
         page = 1
         
         fetchPhotos(isRefreshing: true)
+    }
+    
+    func didSelectedFavorite(at index: Int) {
+        
+        resultCellViewModels[index].isFavorite.toggle()
     }
     
     // MARK: - Private Method

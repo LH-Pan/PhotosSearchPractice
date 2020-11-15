@@ -138,13 +138,13 @@
 			isa = PBXGroup;
 			children = (
 				22AB63832560543000D8D4A5 /* ThirdPartyWrapper */,
+				22AB639325617DB700D8D4A5 /* Resource */,
 				2246DDE9255EEC7500508A1B /* Extension */,
 				2246DDE6255EEBCF00508A1B /* Model */,
 				2246DDE8255EEBE400508A1B /* ViewModel */,
 				2246DDE7255EEBDD00508A1B /* View */,
 				2246DDC1255ECD0D00508A1B /* AppDelegate.swift */,
 				2246DDC3255ECD0D00508A1B /* SceneDelegate.swift */,
-				2246DDCD255ECD0E00508A1B /* Assets.xcassets */,
 				2246DDCF255ECD0E00508A1B /* LaunchScreen.storyboard */,
 				2246DDD2255ECD0E00508A1B /* Info.plist */,
 				2246DDCA255ECD0D00508A1B /* PhotosSearchPractice.xcdatamodeld */,
@@ -266,6 +266,14 @@
 				22AB638B2560DD8B00D8D4A5 /* MJRefreshWrapper.swift */,
 			);
 			path = ThirdPartyWrapper;
+			sourceTree = "<group>";
+		};
+		22AB639325617DB700D8D4A5 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				2246DDCD255ECD0E00508A1B /* Assets.xcassets */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		999C99F7DFBB1DFFEBAD6A68 /* Pods */ = {

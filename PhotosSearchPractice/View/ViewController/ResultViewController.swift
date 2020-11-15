@@ -144,6 +144,8 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
 
         resultCell.cellViewModel = cellViewModel
         
+        resultCell.delegate = self
+        
         return resultCell
     }
     
@@ -165,5 +167,16 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
             
             viewModel.fetchPhotos()
         }
+    }
+}
+
+// MARK: - 實作 AddFavoriteDelegate
+extension ResultViewController: AddFavoriteDelegate {
+    
+    func didPressed(_ cell: ResultCollectionViewCell) {
+        
+        guard let indexPath = resultCollectionView.indexPath(for: cell) else { return }
+        
+        viewModel.didSelectedFavorite(at: indexPath.item)
     }
 }

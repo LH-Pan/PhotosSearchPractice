@@ -40,23 +40,42 @@
                             <constraint firstItem="tV7-JI-vJU" firstAttribute="top" secondItem="3pk-MH-xkA" secondAttribute="top" id="v16-Yr-hth"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moq-7d-poV">
+                        <rect key="frame" x="150" y="20" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="J3O-R5-dtn"/>
+                            <constraint firstAttribute="width" secondItem="Moq-7d-poV" secondAttribute="height" multiplier="1:1" id="Ts3-GN-0fK"/>
+                        </constraints>
+                        <state key="normal" image="favorite_unselected"/>
+                        <state key="selected" image="favorite_selected"/>
+                        <connections>
+                            <action selector="clickFavoriteButton:" destination="FUr-wi-fmz" eventType="touchUpInside" id="vrA-cZ-6Vp"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="3pk-MH-xkA" firstAttribute="top" secondItem="7pY-m0-SdI" secondAttribute="bottom" id="KVu-Ab-y8y"/>
+                    <constraint firstItem="Moq-7d-poV" firstAttribute="centerY" secondItem="zq5-n7-isj" secondAttribute="centerY" multiplier="35:110" id="SEG-vM-sQE"/>
                     <constraint firstAttribute="bottom" secondItem="3pk-MH-xkA" secondAttribute="bottom" id="Z8m-GN-tMK"/>
                     <constraint firstItem="7pY-m0-SdI" firstAttribute="leading" secondItem="zq5-n7-isj" secondAttribute="leading" id="bdy-yZ-Uj6"/>
                     <constraint firstItem="7pY-m0-SdI" firstAttribute="top" secondItem="zq5-n7-isj" secondAttribute="top" id="dZ0-15-0fZ"/>
                     <constraint firstAttribute="trailing" secondItem="3pk-MH-xkA" secondAttribute="trailing" id="rcZ-Zd-ERZ"/>
+                    <constraint firstItem="Moq-7d-poV" firstAttribute="centerX" secondItem="zq5-n7-isj" secondAttribute="centerX" multiplier="165:100" id="uTb-9L-K98"/>
                     <constraint firstItem="3pk-MH-xkA" firstAttribute="leading" secondItem="zq5-n7-isj" secondAttribute="leading" id="wBK-Qh-xZU"/>
                     <constraint firstAttribute="trailing" secondItem="7pY-m0-SdI" secondAttribute="trailing" id="zCM-EC-OVN"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="195" height="173"/>
             <connections>
+                <outlet property="favoriteButton" destination="Moq-7d-poV" id="b1j-Hp-otP"/>
                 <outlet property="photoImageView" destination="7pY-m0-SdI" id="cMS-Qu-n8h"/>
                 <outlet property="titleLabel" destination="tV7-JI-vJU" id="Mr0-h6-EWA"/>
             </connections>
             <point key="canvasLocation" x="-44.927536231884062" y="68.303571428571431"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="favorite_selected" width="512" height="512"/>
+        <image name="favorite_unselected" width="512" height="512"/>
+    </resources>
 </document>
