@@ -25,15 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.window = window
             
-            let searchView = SearchViewController(nibName: nil, bundle: nil)
+            let tabBarController: UITabBarController = PSTabBarController()
             
-            let favoriteView = FavoriteViewController(nibName: nil, bundle: nil)
-            
-            let firstNavigationController = PSNavigationController(rootViewController: searchView)
-            
-            let secondNavigationController = PSNavigationController(rootViewController: favoriteView)
-            
-            window.rootViewController = firstNavigationController
+            window.rootViewController = tabBarController
             
             window.makeKeyAndVisible()
         }

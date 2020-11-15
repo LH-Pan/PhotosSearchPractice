@@ -14,11 +14,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window = window
         
-        let searchView = SearchViewController(nibName: nil, bundle: nil)
+        let tabBarController: UITabBarController = PSTabBarController()
         
-        let navigationController = PSNavigationController(rootViewController: searchView)
-        
-        window.rootViewController = navigationController
+        window.rootViewController = tabBarController
         
         window.makeKeyAndVisible()
         

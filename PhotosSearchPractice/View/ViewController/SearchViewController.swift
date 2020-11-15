@@ -104,7 +104,7 @@ class SearchViewController: UIViewController {
     
     private func setupSubViews() {
         
-        title = "搜尋輸入頁"
+        navigationController?.navigationBar.topItem?.title = "搜尋輸入頁"
         
         view.backgroundColor = .white
         
