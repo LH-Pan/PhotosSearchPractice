@@ -31,11 +31,9 @@ enum SearchViewState {
 class SearchViewController: UIViewController {
     
     // MARK: - Constant / Variable Declare
-    private lazy var viewModel: SearchViewModel = {
+    lazy var viewModel: SearchViewModel = {
 
-        let viewModel = SearchViewModel()
-
-        return viewModel
+        return SearchViewModel()
     }()
     
     let searchItemTextField = PaddingTextField()
@@ -117,26 +115,12 @@ class SearchViewController: UIViewController {
     
     private func setupTextFields() {
         
-        setupTextField(
-            textField: searchItemTextField,
-            title: "欲搜尋內容",
-            borderWidth: 1,
-            borderColor: .placeHolderGray,
-            cornerRadius: 6
-        )
+        setupTextField(textField: searchItemTextField, title: "欲搜尋內容")
         
-        setupTextField(
-            textField: limitTextField,
-            title: "每頁呈現數量",
-            borderWidth: 1,
-            borderColor: .placeHolderGray,
-            cornerRadius: 6,
-            keyBoardType: .numbersAndPunctuation
-        )
+        setupTextField(textField: limitTextField, title: "每頁呈現數量", keyBoardType: .numbersAndPunctuation)
     }
     
-    private func setupTextField(textField: PaddingTextField, title: String, borderWidth: CGFloat,
-                                borderColor: UIColor, cornerRadius: CGFloat, keyBoardType: UIKeyboardType = .default) {
+    private func setupTextField(textField: PaddingTextField, title: String, keyBoardType: UIKeyboardType = .default) {
         
         textField.delegate = self
         textField.placeholder = title
@@ -145,9 +129,9 @@ class SearchViewController: UIViewController {
         textField.keyboardType = keyBoardType
         
         textField.setupBorderAndRadius(
-            borderWidth: borderWidth,
-            borderColor: borderColor,
-            cornerRadius: cornerRadius
+            borderWidth: 1,
+            borderColor: .placeHolderGray,
+            cornerRadius: 6
         )
     }
     

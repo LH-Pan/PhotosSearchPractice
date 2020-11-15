@@ -17,7 +17,14 @@ class ResultViewModel {
         
         didSet {
             
-            reloadDateClosure?()
+            if resultCellViewModels.count > oldValue.count {
+                
+                insertCellsClosure?(resultCellViewModels, oldValue)
+                
+            } else {
+                
+                reloadDataClosure?()
+            }
         }
     }
     
@@ -32,7 +39,10 @@ class ResultViewModel {
         resultCellViewModels.count
     }
     
-    var reloadDateClosure: (() -> Void)?
+    // MARK: - Closure Declare
+    var insertCellsClosure: ((_ newCells: [ResultCellViewModel], _ oldCells: [ResultCellViewModel]) -> Void)?
+    
+    var reloadDataClosure: (() -> Void)?
 
     // MARK: - Initialize Method
     init(searchItem: String, limit: Int) {
@@ -50,7 +60,7 @@ class ResultViewModel {
         fetchPhotos()
     }
 
-    func fetchPhotos() {
+    func fetchPhotos(isRefreshing: Bool = false) {
 
         photosProvider.fetchPhotos(page: page, limit: limit, text: searchItem) { [weak self] result in
 
@@ -62,11 +72,13 @@ class ResultViewModel {
 
                 if response.data.totalPages > strongSelf.page { strongSelf.page += 1 }
 
-                strongSelf.photos += response.data.photos
-       
-                strongSelf.processPhotosData(photos: response.data.photos)
+                strongSelf.photos = isRefreshing ? response.data.photos : strongSelf.photos + response.data.photos
                 
-            case .failure(let error): print(error)
+                strongSelf.processPhotosData(photos: response.data.photos, isRefreshing: isRefreshing)
+                
+            case .failure(let error):
+                
+                print(error)
             }
         }
     }
@@ -76,8 +88,15 @@ class ResultViewModel {
         return resultCellViewModels[index]
     }
     
+    func refreshFetchPhotos() {
+        
+        page = 1
+        
+        fetchPhotos(isRefreshing: true)
+    }
+    
     // MARK: - Private Method
-    private func processPhotosData(photos: [Photo]) {
+    private func processPhotosData(photos: [Photo], isRefreshing: Bool) {
         
         var cellVMs: [ResultCellViewModel] = []
         
@@ -86,7 +105,7 @@ class ResultViewModel {
             cellVMs.append(createResultCellViewModel(photo: photo))
         }
         
-        self.resultCellViewModels += cellVMs
+        self.resultCellViewModels = isRefreshing ? cellVMs : self.resultCellViewModels + cellVMs
     }
     
     private func createResultCellViewModel(photo: Photo) -> ResultCellViewModel {

@@ -38,11 +38,28 @@ class ResultViewController: UIViewController {
     // MARK: - Private Method
     private func bindWithVM() {
         
-        viewModel.reloadDateClosure = { [weak self] in
+        viewModel.reloadDataClosure = { [weak self] in
             
             DispatchQueue.main.async {
                 
                 self?.resultCollectionView.reloadData()
+                
+                self?.resultCollectionView.endHeaderRefreshing()
+            }
+        }
+        
+        viewModel.insertCellsClosure = { [weak self] newCells, oldCells in
+            
+            DispatchQueue.main.async {
+                
+                var indexPaths: [IndexPath] = []
+                
+                for index in oldCells.count..<newCells.count {
+                    
+                    indexPaths.append(IndexPath(row: index, section: 0))
+                }
+                
+                self?.resultCollectionView.insertItems(at: indexPaths)
             }
         }
         
@@ -73,11 +90,18 @@ class ResultViewController: UIViewController {
     
     private func setupCollectionView() {
         
+        resultCollectionView.delegate = self
+        
         resultCollectionView.dataSource = self
+        
+        resultCollectionView.backgroundColor = .white
         
         resultCollectionView.registerCellWithNib(identifier: ResultCollectionViewCell.id)
         
-        resultCollectionView.backgroundColor = .white
+        resultCollectionView.addRefreshHeader { [weak self] in
+            
+            self?.viewModel.refreshFetchPhotos()
+        }
         
         setupCollectionViewLayout()
     }
@@ -103,7 +127,7 @@ class ResultViewController: UIViewController {
 }
 
 // MARK: - 實作 UICollectionViewDataSource
-extension ResultViewController: UICollectionViewDataSource {
+extension ResultViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -121,5 +145,25 @@ extension ResultViewController: UICollectionViewDataSource {
         resultCell.cellViewModel = cellViewModel
         
         return resultCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        cell.alpha = 0
+        
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut, animations: {
+            
+            cell.alpha = 1
+        })
+        
+        animator.startAnimation()
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        if scrollView.contentOffset.y > (scrollView.contentSize.height - UIScreen.main.bounds.height) {
+            
+            viewModel.fetchPhotos()
+        }
     }
 }
