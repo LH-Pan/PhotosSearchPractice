@@ -56,7 +56,7 @@ typealias LSFavoritePhotoResults = (Result<[LSFavoritePhoto], Error>) -> Void
         }
     }
     
-    func saveFavoritePhoto(favoritePhoto: FavoritePhoto, completion: (Result<Void, Error>) -> Void) {
+    func saveFavoritePhoto(favoritePhoto: FavoritePhoto, completion: ((Result<Void, Error>) -> Void)? = nil) {
 
         let lsFavoritePhoto = LSFavoritePhoto(context: viewContext)
 
@@ -66,31 +66,49 @@ typealias LSFavoritePhotoResults = (Result<[LSFavoritePhoto], Error>) -> Void
 
             try viewContext.save()
 
-            completion(Result.success(()))
+            completion?(Result.success(()))
             
             fetchFavoritePhotos()
 
         } catch {
 
-            completion(Result.failure(error))
+            completion?(Result.failure(error))
         }
     }
     
-    func deleteFavoritePhoto(_ lsFavoritePhoto: LSFavoritePhoto, completion: (Result<Void, Error>) -> Void) {
-
+    func deleteFavoritePhoto(photoID: Int, completion: ((Result<Void, Error>) -> Void)? = nil) {
+        
+        let request = NSFetchRequest<LSFavoritePhoto>(entityName: Entity.favoritePhoto.rawValue)
+        
+        request.predicate = NSPredicate(format: "id = \(photoID)")
+        
         do {
-
-            viewContext.delete(lsFavoritePhoto)
-
-            try viewContext.save()
-
-            completion(Result.success(()))
             
-            fetchFavoritePhotos()
+            let lsFavoritePhotos = try viewContext.fetch(request)
+            
+            if lsFavoritePhotos.count == 0 {
+                
+                print("目前沒有建立此 Favorite Photo 資料")
+                
+            } else if lsFavoritePhotos.count == 1 {
+                
+                let lsFavoritePhoto = lsFavoritePhotos[0]
+                
+                viewContext.delete(lsFavoritePhoto)
+                
+                try viewContext.save()
+                
+                completion?(Result.success(()))
+                
+                fetchFavoritePhotos()
+                
+            } else {
 
+                print("有多個 Favorite Photo! 請檢查程式碼")
+            }
         } catch {
-
-            completion(Result.failure(error))
+            
+            completion?(Result.failure(error))
         }
     }
 }

@@ -2,6 +2,8 @@ import UIKit
 
 struct ResultCellViewModel {
     
+    let id: Int
+    
     let imageUrlText: String
     
     let titleText: String
@@ -11,7 +13,7 @@ struct ResultCellViewModel {
 
 protocol AddFavoriteDelegate: AnyObject {
     
-    func didPressed(_ cell: ResultCollectionViewCell)
+    func didPressed(_ cell: ResultCollectionViewCell, didGet imageData: Data?)
 }
 
 class ResultCollectionViewCell: UICollectionViewCell {
@@ -41,6 +43,6 @@ class ResultCollectionViewCell: UICollectionViewCell {
         
         sender.isSelected.toggle()
         
-        delegate?.didPressed(self)
+        delegate?.didPressed(self, didGet: photoImageView.image?.pngData())
     }
 }

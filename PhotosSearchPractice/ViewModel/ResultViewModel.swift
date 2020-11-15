@@ -95,9 +95,21 @@ class ResultViewModel {
         fetchPhotos(isRefreshing: true)
     }
     
-    func didSelectedFavorite(at index: Int) {
+    func didSelectedFavorite(at index: Int, imageData: Data?) {
         
         resultCellViewModels[index].isFavorite.toggle()
+        
+        let favoritePhoto = convertToFavoritePhoto(cellViewModel: resultCellViewModels[index],
+                                                   imageData: imageData)
+        
+        if resultCellViewModels[index].isFavorite {
+            
+            StorageManager.shared.saveFavoritePhoto(favoritePhoto: favoritePhoto)
+            
+        } else {
+            
+            StorageManager.shared.deleteFavoritePhoto(photoID: favoritePhoto.id)
+        }
     }
     
     // MARK: - Private Method
@@ -115,8 +127,19 @@ class ResultViewModel {
     
     private func createResultCellViewModel(photo: Photo) -> ResultCellViewModel {
         
-        let cellVM = ResultCellViewModel(imageUrlText: photo.photoUrlString,
+        let cellVM = ResultCellViewModel(id: Int(photo.id) ?? 0,
+                                         imageUrlText: photo.photoUrlString,
                                          titleText: photo.title)
         return cellVM
+    }
+    
+    private func convertToFavoritePhoto(cellViewModel: ResultCellViewModel, imageData: Data?) -> FavoritePhoto {
+        
+        let favoritePhoto = FavoritePhoto(id: cellViewModel.id,
+                                          title: cellViewModel.titleText,
+                                          photoData: imageData,
+                                          createTime: Date().timeIntervalSince1970)
+        
+        return favoritePhoto
     }
 }

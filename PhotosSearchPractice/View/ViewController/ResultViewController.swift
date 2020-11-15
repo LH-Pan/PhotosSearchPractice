@@ -173,10 +173,10 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
 // MARK: - 實作 AddFavoriteDelegate
 extension ResultViewController: AddFavoriteDelegate {
     
-    func didPressed(_ cell: ResultCollectionViewCell) {
+    func didPressed(_ cell: ResultCollectionViewCell, didGet imageData: Data?) {
         
         guard let indexPath = resultCollectionView.indexPath(for: cell) else { return }
         
-        viewModel.didSelectedFavorite(at: indexPath.item)
+        viewModel.didSelectedFavorite(at: indexPath.item, imageData: imageData)
     }
 }
