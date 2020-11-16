@@ -43,6 +43,7 @@
 		22AB639A256198FD00D8D4A5 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AB6399256198FD00D8D4A5 /* FavoriteViewModel.swift */; };
 		22AB639C25619E9500D8D4A5 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AB639B25619E9500D8D4A5 /* FavoriteCollectionViewCell.swift */; };
 		22AB639E25619EA200D8D4A5 /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22AB639D25619EA200D8D4A5 /* FavoriteCollectionViewCell.xib */; };
+		22AB63A0256225C700D8D4A5 /* PSCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AB639F256225C700D8D4A5 /* PSCollectionViewFlowLayout.swift */; };
 		FD95A7B25754FF040E0CC686 /* Pods_PhotosSearchPractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E015773212C766CE0A9A1597 /* Pods_PhotosSearchPractice.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		22AB6399256198FD00D8D4A5 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		22AB639B25619E9500D8D4A5 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		22AB639D25619EA200D8D4A5 /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
+		22AB639F256225C700D8D4A5 /* PSCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		7B85C4DD418A927D017700BC /* Pods-PhotosSearchPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosSearchPractice.release.xcconfig"; path = "Target Support Files/Pods-PhotosSearchPractice/Pods-PhotosSearchPractice.release.xcconfig"; sourceTree = "<group>"; };
 		91074759752CB5B4CBA6319D /* Pods-PhotosSearchPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosSearchPractice.debug.xcconfig"; path = "Target Support Files/Pods-PhotosSearchPractice/Pods-PhotosSearchPractice.debug.xcconfig"; sourceTree = "<group>"; };
 		C314D70CF81D6CC49E11C572 /* Pods-PhotosSearchPracticeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosSearchPracticeTests.debug.xcconfig"; path = "Target Support Files/Pods-PhotosSearchPracticeTests/Pods-PhotosSearchPracticeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				22AB63812560477E00D8D4A5 /* ResultCollectionViewCell.xib */,
 				22AB639B25619E9500D8D4A5 /* FavoriteCollectionViewCell.swift */,
 				22AB639D25619EA200D8D4A5 /* FavoriteCollectionViewCell.xib */,
+				22AB63A12562284F00D8D4A5 /* CollectionViewFlowLayout */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -297,6 +300,14 @@
 				22AB6395256187A900D8D4A5 /* StorageManager.swift */,
 			);
 			path = LocalStorage;
+			sourceTree = "<group>";
+		};
+		22AB63A12562284F00D8D4A5 /* CollectionViewFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				22AB639F256225C700D8D4A5 /* PSCollectionViewFlowLayout.swift */,
+			);
+			path = CollectionViewFlowLayout;
 			sourceTree = "<group>";
 		};
 		999C99F7DFBB1DFFEBAD6A68 /* Pods */ = {
@@ -506,6 +517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22AB63A0256225C700D8D4A5 /* PSCollectionViewFlowLayout.swift in Sources */,
 				2246DDF8255FDE3400508A1B /* String+Extension.swift in Sources */,
 				22AB63852560545000D8D4A5 /* KingfisherWrapper.swift in Sources */,
 				22AB637D256038D000D8D4A5 /* ResultViewModel.swift in Sources */,

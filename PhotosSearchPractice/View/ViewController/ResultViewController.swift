@@ -7,7 +7,7 @@ class ResultViewController: UIViewController {
     private let viewModel: ResultViewModel
     
     let resultCollectionView: UICollectionView =
-        UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        UICollectionView(frame: CGRect.zero, collectionViewLayout: PSCollectionViewFlowLayout())
     
     // MARK: - Initialize Method
     init(viewModel: ResultViewModel) {
@@ -102,27 +102,6 @@ class ResultViewController: UIViewController {
             
             self?.viewModel.refreshFetchPhotos()
         }
-        
-        setupCollectionViewLayout()
-    }
-    
-    private func setupCollectionViewLayout() {
-        
-        let collectionViewLayout = resultCollectionView.collectionViewLayout
-        
-        guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
-        
-        let inset: CGFloat = CGFloat(8).convertWithSimulatorWidth()
-        
-        let itemWidth = (view.bounds.width - inset * 3) / 2
-        
-        let itemHeight = itemWidth + CGFloat(25).convertWithSimulatorHeight()
-        
-        layout.minimumInteritemSpacing = inset
-        
-        layout.sectionInset = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
-        
-        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
     }
 }
 
@@ -171,12 +150,12 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
 }
 
 // MARK: - 實作 AddFavoriteDelegate
-extension ResultViewController: AddFavoriteDelegate {
+extension ResultViewController: ResultCollectionViewCellDelegate {
     
-    func didPressed(_ cell: ResultCollectionViewCell, didGet imageData: Data?) {
+    func resultCollectionViewCell(_ cell: ResultCollectionViewCell, didGet image: UIImage?) {
         
         guard let indexPath = resultCollectionView.indexPath(for: cell) else { return }
         
-        viewModel.didSelectedFavorite(at: indexPath.item, imageData: imageData)
+        viewModel.didSelectedFavorite(at: indexPath.item, imageData: image?.pngData())
     }
 }

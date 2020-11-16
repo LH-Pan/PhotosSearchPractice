@@ -11,9 +11,9 @@ struct ResultCellViewModel {
     var isFavorite: Bool = false
 }
 
-protocol AddFavoriteDelegate: AnyObject {
+protocol ResultCollectionViewCellDelegate: AnyObject {
     
-    func didPressed(_ cell: ResultCollectionViewCell, didGet imageData: Data?)
+    func resultCollectionViewCell(_ cell: ResultCollectionViewCell, didGet image: UIImage?)
 }
 
 class ResultCollectionViewCell: UICollectionViewCell {
@@ -23,7 +23,7 @@ class ResultCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
-    weak var delegate: AddFavoriteDelegate?
+    weak var delegate: ResultCollectionViewCellDelegate?
     
     var cellViewModel: ResultCellViewModel? {
         
@@ -43,6 +43,6 @@ class ResultCollectionViewCell: UICollectionViewCell {
         
         sender.isSelected.toggle()
         
-        delegate?.didPressed(self, didGet: photoImageView.image?.pngData())
+        delegate?.resultCollectionViewCell(self, didGet: photoImageView.image)
     }
 }
