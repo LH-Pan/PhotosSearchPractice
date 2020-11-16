@@ -7,7 +7,7 @@ class ResultViewController: UIViewController {
     private let viewModel: ResultViewModel
     
     let resultCollectionView: UICollectionView =
-        UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        UICollectionView(frame: CGRect.zero, collectionViewLayout: PSCollectionViewFlowLayout())
     
     // MARK: - Initialize Method
     init(viewModel: ResultViewModel) {
@@ -102,27 +102,6 @@ class ResultViewController: UIViewController {
             
             self?.viewModel.refreshFetchPhotos()
         }
-        
-        setupCollectionViewLayout()
-    }
-    
-    private func setupCollectionViewLayout() {
-        
-        let collectionViewLayout = resultCollectionView.collectionViewLayout
-        
-        guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
-        
-        let inset: CGFloat = CGFloat(8).convertWithSimulatorWidth()
-        
-        let itemWidth = (view.bounds.width - inset * 3) / 2
-        
-        let itemHeight = itemWidth + CGFloat(25).convertWithSimulatorHeight()
-        
-        layout.minimumInteritemSpacing = inset
-        
-        layout.sectionInset = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
-        
-        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
     }
 }
 
