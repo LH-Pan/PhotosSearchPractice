@@ -5,7 +5,7 @@ enum SearchViewState {
     
     case allowSearch
     
-    case disAllowSearch
+    case disallowSearch
     
     var buttonEnable: Bool {
         
@@ -13,7 +13,7 @@ enum SearchViewState {
             
         case .allowSearch: return true
             
-        case .disAllowSearch: return false
+        case .disallowSearch: return false
         }
     }
     
@@ -23,7 +23,7 @@ enum SearchViewState {
             
         case .allowSearch: return .skyBlue
             
-        case .disAllowSearch: return .placeHolderGray
+        case .disallowSearch: return .placeHolderGray
         }
     }
 }
@@ -67,8 +67,6 @@ class SearchViewController: UIViewController {
             
             self?.setupSearchButton(with: state)
         }
-        
-        viewModel.initViewModel()
     }
     
     private func addSubViews() {
@@ -164,8 +162,6 @@ class SearchViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "確認", style: .default, handler: { [weak self] _ in
             
             self?.limitTextField.text = .empty
-            
-            self?.viewModel.setLimit(text: .empty)
         }))
         
         present(alert, animated: true, completion: nil)

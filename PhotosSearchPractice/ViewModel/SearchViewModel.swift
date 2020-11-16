@@ -7,8 +7,6 @@ class SearchViewModel {
         
         didSet {
             
-            if searchItemText == .empty { return }
-            
             changeState()
         }
     }
@@ -16,22 +14,8 @@ class SearchViewModel {
     private var limitText: String = .empty {
         
         didSet {
-            
-            if limitText == .empty {
                 
-                state = .disAllowSearch
-                
-                return
-            }
-            
-            if !isNumber(text: limitText) {
-                
-                notNumberAlertClosure?()
-                
-            } else {
-                
-                changeState()
-            }
+            changeState()
         }
     }
     
@@ -50,7 +34,7 @@ class SearchViewModel {
         return floorInt
     }
     
-    var state: SearchViewState = .disAllowSearch {
+    var state: SearchViewState = .disallowSearch {
         
         didSet {
             
@@ -65,18 +49,32 @@ class SearchViewModel {
     
     var changeStateClosure: ((SearchViewState) -> Void)?
     
-    // MARK: - Public Method
-    func initViewModel() {
+    // MARK: - Initialize Method
+    init() {
         
         changeState()
     }
     
+    // MARK: - Public Method
     func setSearchItem(text: String?) {
+        
+        if text == .empty { return }
         
         searchItemText = text ?? .empty
     }
     
     func setLimit(text: String?) {
+        
+        if text == .empty { return }
+        
+        if !isNumber(text: text) {
+            
+            notNumberAlertClosure?()
+            
+            state = .disallowSearch
+            
+            return
+        }
         
         limitText = text ?? .empty
     }
@@ -89,6 +87,6 @@ class SearchViewModel {
     
     private func changeState() {
         
-        state = (searchItemText != .empty && limitText != .empty) ? .allowSearch : .disAllowSearch
+        state = (searchItemText != .empty && limitText != .empty) ? .allowSearch : .disallowSearch
     }
 }
