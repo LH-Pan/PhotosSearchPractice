@@ -28,7 +28,7 @@
 
 > 程式碼規範檢查工具，藉由條件規範 Coding Style
 
-此練習不使用 Storyboard，故於開始實作前直接將 Main.storyboard 刪除，並將專案 Targets -> General 的 Main Interface 設為空值。
+此練習不使用 Storyboard，故於開始實作前直接將 Main.storyboard 刪除，並將專案 Targets -> General 的 Main Interface 設為空值，使用的模擬器為 iPhone 。
 
 預設畫面刪除後需指定新的 window，因版本 13 以上會優先進入 SceneDelegate，低於 13 版本則直接進入 AppDelegate，故兩邊都寫入判斷版本以及指定 rootViewController 為自定義的 TabBarController
 
