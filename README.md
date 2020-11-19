@@ -43,7 +43,7 @@ TabBar 頁面依指定需求分為兩個 item： Featured 及 Favorite，在 PST
   - 搜尋頁面: 
     - 畫面皆由 Controller 負責，故生成輸入搜尋關鍵字、每頁搜尋數量的 TextField 及前往搜尋結果頁面的按鈕，並在 controller 中設定 constraints
     - 考量到這個畫面會有 allowSearch 及 disallowSearch 的情況，將這兩種狀態利用 enum 定義為 State，此頁面共會用到兩個 TextField 的字串及 state 的資料
-    - 資料皆由 ViewModel 負責，因此 ViewModel 會擁有兩個 String 及 State 的 property，利用 Access Controller 將資料設為 private，僅限自己能夠更改，需開源給外部使用時則建立 computer property，可使資料僅能讀取
+    - 資料皆由 ViewModel 負責，因此 ViewModel 會擁有兩個 String 及 State 的 property，利用 Access Control 將資料設為 private，僅限自己能夠更改，需開源給外部使用時則建立 compute property，可使資料僅能讀取
     - 建立更改資料的 method，數量的資料則先判斷是否為數字，若不是數字則觸發 notNumberAlertClosure
     - 兩個字串資料皆使用 property observer 的 did set 來偵測是否有值的變動，有的話先判斷是否皆為合法的資料，若合法則將 State 更改為 allowSearch，否則改為 disallowSearch
     - 更改了 State 再藉由 did set 觸發 changeStateClosure 將 State 傳出去，最後於 controller 實作 viewModel 的 closure 以執行 DataBinding
